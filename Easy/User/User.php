@@ -7,7 +7,7 @@ class User
 	{
 		$this->pdo = $pdo;
 	}
-	public function register($mail, $pw, $hash = false;)
+	public function register($mail, $pw, $hash = false)
 	{
 		$sql = "INSERT INTO `user`(`id`, `mail`, `pw`) VALUES (NULL, ?, ?)";
 		$this->pdo->insert($sql, array($mail, md5($pw)));
