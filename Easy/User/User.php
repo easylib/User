@@ -3,10 +3,17 @@ namespace Easy\User;
 
 class User
 {
+	private $login = false;
+	private $userID = NULL;
 	public function __construct($pdo, $session)
 	{
 		$this->pdo = $pdo;
 		$this->session = $session;
+		if($this->session->get("login"))
+		{
+			$this->login = true;
+			$this->userID = $this->session->get("userID");
+		}
 	}
 	public function register($mail, $pw, $hash = false)
 	{
@@ -31,6 +38,8 @@ class User
 			return True;
 			$this->session->set("login", true);
 			$this->session->set("userID", $res["id"]);
+			$this->login = true;
+			$this->userUD = $res["id"];
 		}
 		return False;
 	}
