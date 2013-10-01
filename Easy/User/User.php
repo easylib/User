@@ -35,11 +35,12 @@ class User
 		$res = $res[0];
 		if($res["pw"]==md5($pw))
 		{
-			return True;
+			
 			$this->session->set("login", true);
 			$this->session->set("userID", $res["id"]);
 			$this->login = true;
 			$this->userUD = $res["id"];
+			return True;
 		}
 		return False;
 	}
