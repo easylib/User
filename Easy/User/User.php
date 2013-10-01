@@ -18,7 +18,7 @@ class User
 	}
 	public function login($mail, $pw)
 	{
-		$sql = 'SELECT `id`, `pw` FROM `user` WHERE `mail` == "?"';
+		$sql = 'SELECT `id`, `pw` FROM `user` WHERE `mail` = "?"';
 		$res = $this->pdo->query($sql, array($mail));
 		if(count($res)!=1)
 		{
