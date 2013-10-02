@@ -48,5 +48,11 @@ class User
 	{
 		return $this->userID;
 	}
+	public function getMail()
+	{
+		$sql = 'SELECT `mail` FROM `user` WHERE `id` = ?';
+		$res = $this->pdow->query($sql, array($this->userID));
+		return $res[0][0];
+	}
 }
 ?>
